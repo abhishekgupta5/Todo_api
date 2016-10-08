@@ -58,9 +58,10 @@ def update_task(task_id):
         abort(404)
     if not request.json:
         abort(400)
-    if 'title' in request.json and type(request.json['title']) is not unicode:
+#It's to note that since we are using python3, we are using 'str' here, in case of python2, 'str' needs to replace with 'unicode'
+    if 'title' in request.json and type(request.json['title']) is not str:
         abort(400)
-    if 'description' in request.json and type(request.json['description']) is not unicode:
+    if 'description' in request.json and type(request.json['description']) is not str:
         abort(400)
     if 'done' in request.json and type(request.json['done']) is not bool:
         abort(400)
